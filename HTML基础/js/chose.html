@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href=""/>
+	</head>
+	<body>
+		<div>
+			<h1></h1>
+			<div id="infos"></div>
+			<div class="content"></div>
+			<div class="content"></div>
+		</div>
+	</body>
+	
+	<script type="text/javascript">
+		var node = document.getElementById('infos');
+		node.innerHTML = "根据id获取节点设置内容";
+		
+		var arrays = document.getElementsByClassName('content');
+		var arr = arrays[0];
+		arr.innerHTML = '根据className获取节点设置内容';
+		
+		var head = document.getElementsByTagName('h1');
+		var cont = head[0];
+		cont.innerHTML = '根据标签获取节点设置内容';
+		
+	</script>
+</html>
