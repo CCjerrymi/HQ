@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.info{
+				width: 300px;
+				height: 400px;
+				margin: auto;
+			}
+			li{
+				display: inline-block;
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+				background-color: #D8D8D8;
+				margin-right: 10px;
+			}
+			.active{
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<img src="../img/jd.png" id="img"/>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</body>
+	
+	<script type="text/javascript">
+		var index = 0;
+		var address = ['../img/jd.png','../img/jdlogo.png','../img/libai.jpg'];
+		var oImg = document.getElementById('img');
+		var nodes = document.getElementsByTagName('li');
+		
+		oImg.onclick = function(){
+			index++;
+			var num = index % (address.length);
+			oImg.src = address[num];
+			nodes[num].click();
+		}
+		
+		for(var i = 0;i < nodes.length;i++){
+			nodes[i].index = i;
+			nodes[i].onclick = function(){
+				for(i = 0;i < nodes.length; i++ ){
+					nodes[i].className = '';
+				}
+				this.className = 'active';
+				oImg.src = address[this.index % (address.length)];
+			}
+		}
+	</script>
+</html>

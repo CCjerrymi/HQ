@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#panel{
+				width: 600px;
+				height: 300px;
+				border: 1px solid black;
+				margin: auto;
+				position: relative;/**/
+			}
+			
+			#btn1{
+				width: 35px;
+				height: 35px;
+				display: block;
+				border: none;
+				background:url("../img/right.png") no-repeat center; 
+				position: absolute;/**/
+				background-color: #D8D8D8;
+				opacity:0.5;
+				right: 0;
+				/*top: 50%;
+				margin-top: -17.5px;*/
+				top:130px;
+				/*opacity:0.6;*/
+								
+			}
+			
+			#btn2{
+				width: 35px;
+				height: 35px;
+				display: block;
+				border: none;
+				background:url("../img/left.png") no-repeat center; 
+				position: absolute;/**/
+				background-color: #D8D8D8;
+				opacity:0.5;
+				/*top: 50%;
+				margin-top: -17.5px;*/
+				top:130px;
+				/*opacity:0.6;*/
+			}
+			
+			img{
+				width: 600px;
+				height: 300px;
+			}
+			
+			li{
+				display: inline-block;
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+				margin-left: 15PX;
+				background-color: #D8D8D8;
+				opacity:0.6;
+			}
+			
+			ul{
+				display: block;
+				position: absolute;
+				bottom: 10px;
+				left: 150px;
+			}
+			
+			.active{
+				background-color:red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="panel">
+			<img src="../img/img1.jpg" id="img"/>
+			<input type="button" id="btn1"/>
+			<input type="button" id="btn2"/>	
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+	</body>
+	
+	<script type="text/javascript">
+		var index = 0; 
+		var address = ['../img/img1.jpg','../img/img2.jpg','../img/img3.jpg','../img/img4.jpg','../img/img5.jpg'];
+		var pre = document.getElementById('btn2');
+		var aft = document.getElementById('btn1');
+		var oImg = document.getElementById('img');
+		var nodes = document.getElementsByTagName('li');
+		
+		
+		
+		pre.onclick = ()=>{
+			index %= (address.length);
+			index = (index==0?address.length - 1:index - 1);			
+			oImg = document.getElementById('img');
+			oImg.src = address[index];
+			nodes[index].click();
+		}
+		
+		aft.onclick = ()=>{
+			index %= (address.length);
+			index = (index==(address.length - 1)?0:index + 1);			
+			oImg = document.getElementById('img');
+			oImg.src = address[index];
+			nodes[index].click();
+		}
+		
+		oImg.onclick = ()=>{
+			index++;
+			var num = index % (address.length);
+			oImg.src = address[num];
+			nodes[num].click();
+		}
+		
+		for(var i = 0;i < nodes.length;i++){
+			nodes[i].index = i;
+			nodes[i].onclick = function(){
+				for(i = 0;i < nodes.length; i++ ){
+					nodes[i].className = '';
+				}
+				this.className = 'active';
+				oImg.src = address[this.index % (address.length)];
+				index = this.index;//点击圆点没有规律，点击后需要重新设置index的值
+			}
+		}
+		
+		nodes[0].click();
+	</script>
+</html>
