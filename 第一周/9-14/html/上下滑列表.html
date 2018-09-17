@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0px;
+				margin: 0px;
+			}
+			div{
+				width: 200px;
+				height: 400px;
+				border:2px solid black;
+				overflow: hidden;
+				position: relative;
+				margin: auto;
+			}
+			li{
+				display: block;
+				width: 100%;
+				height: 80px;
+				background: cornflowerblue;
+				border-bottom: 2px solid white;
+			}
+			
+			button{
+				position: absolute;
+				width: 100%;
+			}
+			
+			#up{
+				top: 0px;
+			}
+			
+			#down{
+				bottom: 0px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			
+		<button id="up">向上</button>
+		<button id="down">向下</button>
+			
+		</div>
+	</body>
+	
+	<script type="text/javascript" src="../js/myQuery.js" ></script>
+	<script type="text/javascript">
+		var oDiv = document.getElementsByTagName('div')[0];
+		//获取div的高度
+		var divH = parseInt(getStyle(oDiv,'height'));
+		//获取ul对象
+		var oUl = document.getElementsByTagName('ul')[0];
+		//获取ul的高度
+		var ulH = parseInt(getStyle(oUl,'height'));
+		//向上滑动
+		var oUp = document.getElementById('up');
+		var oDown = document.getElementById('down');
+		//垂直方向marginTop的值
+		var hy = 0;
+		
+		var uptimer;
+		//鼠标左键按下
+		oUp.onmousedown = function(){
+			console.log('1');
+			uptimer = setInterval(function(){
+				hy -= 5;
+				if(hy < divH - ulH){
+					hy = divH - ulH;
+					clearInterval(uptimer);
+				}
+				oUl.style.marginTop = hy + "px";
+			},50);
+		}
+		//鼠标左键松开
+		oUp.onmouseup = function(){
+			clearInterval(uptimer);
+		}
+		
+		oDown.onmousedown = function(){
+			console.log('1');
+			uptimer = setInterval(function(){
+				hy += 5;
+				if(hy > 0){
+					clearInterval(uptimer);
+				}
+				oUl.style.marginTop = hy + "px";
+			},50);
+		}
+		//鼠标左键松开
+		oDown.onmouseup = function(){
+			clearInterval(uptimer);
+		}
+	</script>
+</html>

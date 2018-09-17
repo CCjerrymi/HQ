@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<title></title>
+		<style type="text/css">
+			.window{
+				width: 200px;
+				height: 200px;
+				overflow: hidden;
+				margin: auto;
+			}
+			.cont{
+				width: 400px;
+				height: 200px;
+				margin-left: -200px;
+			}
+			img{
+				width: 200px;
+				height: 200px;
+				float: left;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="window">
+			<div class="cont" style="margin-left: -200px;">
+				<img id="first" src="../img/img2.jpg">
+				<img id="second" src="../img/img1.jpg"><!--看0藏1-->
+			</div>
+		</div>
+	
+	<script type="text/javascript" src="../js/myQuery.js"></script>
+	<script type="text/javascript">
+		
+		var aImg = ['../img/img1.jpg',
+					'../img/img2.jpg',
+					'../img/img3.jpg',
+					'../img/img4.jpg'];
+		
+		var oCont = document.getElementsByClassName('cont')[0];
+		
+		var num = 0;
+		/*console.log("藏" + $('first').src);
+		console.log("看" + $('second').src);*/
+		/*
+		 *F->firt S->second 数字表示图片位置
+		 *规律：F1S0,F2S1,F3S2,F4S3,F0S4,F1S0 			
+		 * 
+		 * 
+		 * */
+		oCont.onclick = function(){
+			Go(oCont,5,0,'marginLeft',function(){
+				num++;
+				$('first').src = aImg[(num+1)%4];
+				$('second').src = aImg[num%4];
+				oCont.style.marginLeft = '-200px';
+				
+				/*console.log("藏" + $('first').src);
+				console.log("看" + $('second').src);*/
+			});
+		}
+		
+		setInterval(function(){
+			oCont.click();
+		},1000);
+	</script>
+
+</body></html>

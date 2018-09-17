@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.panel{
+				width: 300px;
+				height: 180px;
+				margin: auto;
+			}
+			img{
+				width: 300px;
+				height: 180px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="panel">
+			<img id="pic" src="../img/img1.jpg" />
+		</div>
+		
+	</body>
+	<script type="text/javascript" src="../js/myQuery.js" ></script>
+	<script type="text/javascript">
+		
+		var aImg = ['../img/img1.jpg',
+					'../img/img2.jpg',
+					'../img/img3.jpg',
+					'../img/img4.jpg'];
+		
+		var num = 0;
+		
+//		$('pic').onclick = function(){
+//			//渐变消失
+//			dispear($('pic'),-0.05, function(){
+//				num++;
+//				$('pic').src = aImg[num%4]; //0 ，1，2，3
+//				//渐变显示
+//				dispear($('pic'),0.05,function(){
+//					
+//				});
+//			});
+//		}
+		
+		setInterval(function(){
+			//渐变消失
+			dispear($('pic'),-0.05, function(){
+				num++;
+				$('pic').src = aImg[num%4]; //0 ，1，2，3
+				//渐变显示
+				dispear($('pic'),0.05,function(){
+					
+				});
+			});
+		},1000);
+		
+	</script>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">这是div</div>
+	</body>
+	<script type="text/javascript" src="../js/myQuery.js" ></script>
+	<script type="text/javascript">
+		
+		$('box').onclick = function(){
+			//改变内部的字体
+			$('box').innerHTML = '改变div';
+			var s = getStyle($('box'),'height');// '100px'
+//			parseInt(字符串) 将字符串转化为数字类型
+//			parseInt(s)//100
+			
+//			Go(a,b,c,d,e);//平移
+//			参数a ：需要平移的对象（标记）
+//			参数b: 每次平移的长度 （不需要单位）
+//			参数c: 平移的终点位置距离
+//			参数d: 平移的方向 （根据定位级1、 绝对定位 'top' 'left' 2、相对定位 'marginTop' 'marginLeft'）;
+//			参数e: 平移执行完成后需要执行的function函数 (可选添加)
+
+//			Go($('box'),5,400,'marginLeft');
+			Go($('box'),5,400,'marginLeft',function(){
+//				alert('平移完成');//当平移动画完成时，会执行函数中的内容
+				dispear($('box'),-0.01);
+			});
+
+//			dispear(a,b,c);//渐变
+//			参数a ： 需要渐变的对象
+//			参数b : 每次渐变的程度  （透明 0 ~ 1 不透明） 0.05
+//			参数c ： 渐变完成时，需要执行的function函数
+		}
+		
+		
+
+	</script>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>旋转风车</title>
+    <style type="text/css">
+        .cont{
+            width: 400px;
+            height: 600px;
+            border: 1px solid red;
+            position: relative;
+            overflow: hidden;
+            margin: auto;
+        }
+
+        .line{
+            width:300px;
+            height: 300px;
+            background: darkslateblue;
+            position: absolute;
+            bottom: -150px;
+            left: 50px;
+            transform: rotate(45deg) skew(40deg,40deg);
+            /*
+                rotate(anglg)定义2D旋转，参数为旋转角度
+                skew(X-anglg,Y-angle)沿着x轴和y轴的2D倾斜转换
+            */
+        }
+        .leaf-cont{
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            top: 20px;
+            transition: all 1s;
+            z-index: 1;/*设置元素的堆叠顺序，只有在定位的元素上有用*/
+        }
+
+        .cont:hover .leaf-cont{
+            transform: rotate(720deg);
+        }
+        .leaf{
+            width: 0;
+            height: 0;
+            position: absolute;
+            left: 200px;
+            top: 200px;
+            transform-origin: left top;/*设置循转元素基点的位置*/
+            border-width: 30px 100px;
+            border-style: solid;
+            border-color: cornflowerblue transparent transparent cornflowerblue;
+        }
+
+        /*
+            nth-child() 规定属于其父元素的子元素的样式
+
+        */
+        .leaf:nth-child(2n){
+            border-color: deeppink transparent transparent deeppink;
+        }
+        .leaf:nth-child(2){
+            transform: rotate(90deg);
+        }
+        .leaf:nth-child(3){
+            transform: rotate(180deg);
+        }
+        .leaf:nth-child(4){
+            transform: rotate(270deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="cont">
+        <div class="leaf-cont">
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+        </div>
+        <div class="line"></div>
+    </div>
+</body>
+
+</html>

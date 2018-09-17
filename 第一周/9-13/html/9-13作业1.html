@@ -93,9 +93,7 @@
 		var aft = document.getElementById('btn1');
 		var oImg = document.getElementById('img');
 		var nodes = document.getElementsByTagName('li');
-		
-		
-		
+			
 		pre.onclick = ()=>{
 			index %= (address.length);
 			index = (index==0?address.length - 1:index - 1);			
@@ -132,5 +130,10 @@
 		}
 		
 		nodes[0].click();
+		
+		//添加计时器进行图片的切换
+		setInterval(function(){
+			aft.click();
+		},1000);
 	</script>
 </html>
