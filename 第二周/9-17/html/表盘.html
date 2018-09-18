@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <title>表盘</title>
     <style type="text/css">
+        li{
+            list-style: none;
+        }
         .cont{
             width: 400px;
             height: 400px;
@@ -46,11 +49,14 @@
             top: 200px;
             left: 50%;
             margin-left: -10px;
-            transition: all 1s;
+           /* transition: all 1s;*/
             transform-origin: center top;
         }
 
         .min{
+            width: 15px;
+            height: 120px;
+            margin-left: -8px;
             background: #558ED5;
         }
         .sec{
@@ -61,7 +67,7 @@
             top: 200px;
             left: 50%;
             margin-left: -6px;
-            transition: all 1s;
+           /* transition: all 1s;*/
             transform-origin: center top;
         }
 
@@ -80,6 +86,9 @@
         }
 
         .min:after{
+            width: 15px;
+            height: 15px;
+            bottom: -6px;
             background: #558ED5;
         }
 
@@ -90,27 +99,16 @@
             bottom: -5px;
             background: #BCD68D;
         }
-        .cont:hover .hour{
-            transform: rotate(360deg);
-        }
 
-        /*分针*/
-        .min{
-            transform: rotate(90deg);
-        }
-        .cont:hover .min{
-            transform: rotate(180deg);
-        }
-
-        .sec{
-            transform: rotate(200deg);
-        }
-        .cont:hover .sec{
-            transform: rotate(270deg);
-        }
-
-        li{
-            list-style: none;
+        .dot{
+            width: 30px;
+            height: 30px;
+            background: deeppink;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -15px 0 0 -15px;
+            border-radius: 50%;
         }
     </style>
 </head>
@@ -120,6 +118,7 @@
         <div class="hour"></div>
         <div class="min"></div>
         <div class="sec"></div>
+        <div class="dot"></div>
     </div>
 </body>
     <script type="text/javascript">
@@ -129,5 +128,29 @@
             str+='<li style="transform: rotate('+i*6+'deg);"></li>';
         }
         oUl.innerHTML = str;
+
+        function change(){
+            var myDate = new Date();
+            //获取时分秒
+            var hour = myDate.getHours();
+            var min = myDate.getMinutes();
+            var sec = myDate.getSeconds();
+
+            var oHour = document.getElementsByClassName('hour')[0];
+            var oMin = document.getElementsByClassName('min')[0];
+            var oSec = document.getElementsByClassName('sec')[0];
+
+            oHour.style.transform = 'rotate('+((hour*30+180)+((min*6+180)/120))+'deg)';
+            oMin.style.transform = 'rotate('+(min*6+180)+'deg)';
+            oSec.style.transform = 'rotate('+(sec*6+180)+'deg)';
+
+        }
+        change();
+        //获取系统时间
+        setInterval(function(){
+            change();
+        },1000);
+
+
     </script>
 </html>
