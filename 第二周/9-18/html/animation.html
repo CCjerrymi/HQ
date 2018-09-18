@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .cont{
+            width:400px;
+            height:400px;
+            border: 1px solid #000;
+        }
+        .box{
+            width: 50px;
+            height: 50px;
+            background: red;
+            animation: boxMove 3s 1s infinite linear;
+        }
+        
+        /*帧动画*/
+        @keyframes boxMove {
+            0%{
+                margin-left: 0;
+                margin-top: 0;
+            }
+            25%{
+                margin-left: 350px;
+                margin-top: 0;
+            }
+            50%{
+                margin-left: 350px;
+                margin-top: 350px;
+            }
+            75%{
+                margin-left: 0;
+                margin-top: 350px;
+            }
+            100%{
+                margin-left: 0;
+                margin-top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+<button id="begin">开始</button>
+<button id="stop">停止</button>
+<div class="cont">
+    <div class="box" id="box"></div>
+</div>
+</body>
+<script type="text/javascript">
+    var oBegin = document.getElementById('begin');
+    var oStop = document.getElementById('stop');
+    var oBox = document.getElementById('box');
+    oStop.onclick = function(){
+        oBox.style.animationPlayState = 'paused'
+    }
+
+    oBegin.onclick = function(){
+        oBox.style.animationPlayState = 'running'
+    }
+</script>
+</html>
