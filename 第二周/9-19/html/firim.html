@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>firim</title>
+    <link rel="stylesheet" href="../css/firim.css">
+</head>
+<body>
+    <div class="face"></div>
+    <div class="plane-cont">
+        <div class="inner">
+            <img class="plane" src="../img/plane.svg"/>
+            <img class="propeller" src="../img/propeller.svg"/>
+        </div>
+
+    </div>
+
+</body>
+<script type="text/javascript">
+    document.onmousewheel = function(ev){
+        var target = ev.wheelDelta;
+        console.log(target);
+        if(target<0){
+            var oCont = document.getElementsByClassName('plane-cont')[0];
+            var oBye = document.getElementsByClassName('bye')[0];
+            oCont.className = 'plane-cont leave';
+            oBye.className = 'bye active';
+
+        }
+    }
+</script>
+</html>
